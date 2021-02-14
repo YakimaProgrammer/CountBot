@@ -1,3 +1,6 @@
+"This program only requires minimal configuration and tweaking (xkcd.com/1742/)"
+#Mostly, you'll need to use pyautogui.mouseInfo() to check how the coordinates in this program correspond to the coordinates on your screen.
+
 import pyautogui, time, pyperclip
 
 #all print statements can be omitted. They are just for debugging purposes
@@ -13,6 +16,7 @@ def getpixel(x, y):
 def getnumber():
     while True:
         try:
+            #coordinates of the number in a message
             pyautogui.click(388 if side else 812, 599, clicks = 2)
             pyautogui.hotkey("ctrl","c")
             return int(pyperclip.paste())
@@ -34,7 +38,7 @@ Run this program.
 
 #These are the RGB values that signify a count was accepted
 accepted_pixels = {
-    (119, 178, 85),
+    (119, 178, 85), #RGB values of the checkboxes 
     (34, 102, 153)
 }
 
@@ -65,7 +69,7 @@ while True:
         while ((pixel := getpixel(404 if side else 829, 627)) not in accepted_pixels):
             #print("Got", pixel)
 
-            if pixel == (255, 255, 255): #if I open python, stop running
+            if pixel == (255, 255, 255): #if I open python, stop running. The background for the python shell on my computer is white RGB(255,255,255)
                 raise SystemExit
 
             #someone probably sent a chat message. Just to be safe, I'm going to wait 10 seconds for the last message to be verified
@@ -93,7 +97,7 @@ while True:
     lastnumber = currentnumber
 
     #Now let's check if someone messed it up
-    if getpixel(347, 520) == (103, 89, 207) or getpixel(774, 588) == (103, 88, 207):
+    if getpixel(347, 520) == (103, 89, 207) or getpixel(774, 588) == (103, 88, 207): #coordinates and RGB values of the purple +1 countbot logo
         #Count bot is really wierd when restarting a count
         #The best way is to just spam "1" until it registers
         while ((pixel := getpixel(404 if side else 829, 627)) not in accepted_pixels):
