@@ -42,7 +42,7 @@ accepted_pixels = {
     (34, 102, 153)
 }
 
-#pyautogui.PAUSE = 0 #Might cause problems depending on implementation of pixle()
+#pyautogui.PAUSE = 0 #Might cause problems depending on implementation of pixel()
 
 #Start on the left side
 side = 0
