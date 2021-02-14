@@ -62,10 +62,15 @@ while True:
             #this also fires on 100, and 420, since those get a nonstandard verification reaction
             if time.time() > start + 10:
                 print("breaking out...")
-                #break
+                break
         else:
+            #this only runs if I didn't break
             print("fired!")
-           # break
+            continue
+        
+        #This state is only reachable if I break
+        currentnumber += 1
+        break
 
     #click in the textbox to start writing
     pyautogui.click(410 if side else 967, 679)
