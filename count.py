@@ -79,4 +79,13 @@ while True:
     print(currentnumber)
 
     lastnumber = currentnumber
-    
+
+    #Now let's check if someone messed it up
+    if getpixel(347, 520) == (103, 89, 207) or getpixel(774, 588) == (103, 88, 207):
+        while ((pixel := getpixel(404 if side else 829, 627)) not in accepted_pixels):
+            pyautogui.write("1")
+            pyautogui.press("enter")
+            time.sleep(2)
+
+        currentnumber = 1
+        lastnumber = 1
